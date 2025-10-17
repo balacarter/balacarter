@@ -1,21 +1,33 @@
+import Header from '@/components/Header';
+import ContactForm from '@/components/ContactForm';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-4xl mx-auto px-6 py-8">
-          <h1 className="text-4xl font-bold tracking-tight">Bala Carter</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">
+      {/* Sticky Header */}
+      <Header />
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+            Bala Carter
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8">
             Software Engineer
           </p>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Frontend specialist transitioning to full-stack development. 
+            Building modern web experiences with React, TypeScript, and Node.js.
+          </p>
         </div>
-      </header>
+      </section>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
+      <main className="max-w-4xl mx-auto px-6">
         {/* About Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">About</h2>
+        <section id="about" className="min-h-screen py-20">
+          <h2 className="text-3xl font-bold mb-6">About</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg leading-relaxed mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
@@ -31,8 +43,8 @@ export default function Home() {
         </section>
 
         {/* Skills Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+        <section id="skills" className="min-h-screen py-20">
+          <h2 className="text-3xl font-bold mb-6">Skills</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg leading-relaxed mb-4">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
@@ -47,8 +59,8 @@ export default function Home() {
         </section>
 
         {/* Experience Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">Experience</h2>
+        <section id="experience" className="min-h-screen py-20">
+          <h2 className="text-3xl font-bold mb-6">Experience</h2>
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg leading-relaxed mb-4">
               Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
@@ -67,10 +79,22 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="min-h-screen py-20">
+          <h2 className="text-3xl font-bold mb-6">Contact</h2>
+          <div className="mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
+              Interested in working together? Feel free to reach out for opportunities, 
+              collaborations, or just to say hello.
+            </p>
+          </div>
+          <ContactForm />
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 mt-16">
+      <footer className="border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <p className="text-center text-gray-600 dark:text-gray-400">
             © 2025 Bala Carter. All rights reserved.
