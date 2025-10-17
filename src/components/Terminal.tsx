@@ -236,7 +236,15 @@ export default function Terminal() {
       {/* Rainbow border wrapper */}
       <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900">
         {/* Rotating gradient background - sits behind due to z-index */}
-        <div className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]" style={{ width: '184%', height: '213%', top: '-271px', left: '-330px' }}></div>
+        <div
+          className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
+          style={{
+            width: '300%',
+            height: '300%',
+            top: '-300px',
+            left: '-460px',
+          }}
+        ></div>
 
         {/* Terminal container */}
         <div className="relative rounded-[10px] shadow-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800/95">
