@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import Background from '@/components/Background';
+import HeroImage from '@/components/HeroImage';
 import ContactForm from '@/components/ContactForm';
 import SkillCard from '@/components/SkillCard';
 import ExperienceCard from '@/components/ExperienceCard';
@@ -16,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen text-foreground relative">
+    <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <Background />
       <Header />
 
@@ -33,14 +34,25 @@ export default function Home() {
           className={`flex-1 transition-all duration-300 ${isTerminalExpanded ? 'lg:ml-[700px]' : 'lg:ml-96'}`}
         >
           {/* Hero Section */}
-          <section className="min-h-screen flex items-center justify-center px-6 py-20">
-            <div className="w-full max-w-4xl mx-auto text-center">
-              <h1 className="text-6xl sm:text-7xl font-bold tracking-tight mb-6">
-                Welcome!
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400">
-                Check out the terminal in the sidebar to explore my work →
-              </p>
+          <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
+            <div className="w-full max-w-5xl mx-auto">
+              {/* Hero Image with Tilt Effect */}
+              <div className="mb-12">
+                <HeroImage />
+              </div>
+              
+              {/* Hero Text */}
+              <div className="text-center">
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+                  Bala Carter
+                </h1>
+                <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-6">
+                  Frontend Software Engineer
+                </p>
+                <p className="text-lg text-gray-500 dark:text-gray-500">
+                  Building elegant, intuitive web experiences
+                </p>
+              </div>
             </div>
           </section>
 
