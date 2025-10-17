@@ -1,28 +1,87 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Terminal from './Terminal';
 
 interface SidebarProps {
+  isVisible: boolean;
   isExpanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
   onContactClick: () => void;
+  onClose: () => void;
 }
 
-export default function Sidebar({ isExpanded, onExpand, onCollapse, onContactClick }: SidebarProps) {
+export default function Sidebar({ 
+  isVisible, 
+  isExpanded, 
+  onExpand, 
+  onCollapse, 
+  onContactClick, 
+  onClose 
+}: SidebarProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <aside
-      className={`hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ${isExpanded ? 'w-[700px]' : 'w-96'}`}
-    >
+    <>
+      {/* Overlay for mobile */}
+      {isMobile && isVisible && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside
+        className={`fixed left-0 top-16 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-800 transition-all duration-300 z-40 ${
+          isMobile
+            ? `w-[90%] ${isVisible ? 'translate-x-0' : '-translate-x-full'}`
+            : `${isVisible ? 'translate-x-0' : '-translate-x-full'} ${isExpanded ? 'w-[700px]' : 'w-96'}`
+        }`}
+      >
       {/* Minimal Container */}
       <div
         className="h-full p-8 overflow-y-auto flex flex-col"
-        onClick={onExpand}
-        onBlur={onCollapse}
-        tabIndex={0}
+        onClick={!isMobile ? onExpand : undefined}
+        onBlur={!isMobile ? onCollapse : undefined}
+        tabIndex={!isMobile ? 0 : undefined}
       >
         {/* Header */}
-        <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800">
+        <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800 relative">
+          {/* Mobile Close Button */}
+          {isMobile && (
+            <button
+              onClick={onClose}
+              className="absolute top-0 right-0 p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              aria-label="Close sidebar"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          )}
+          
           <h1 className="text-3xl font-bold tracking-tight mb-2">
             Bala Carter
           </h1>
@@ -100,5 +159,6 @@ export default function Sidebar({ isExpanded, onExpand, onCollapse, onContactCli
         </div>
       </div>
     </aside>
+    </>
   );
 }

@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const GeometricIcon = dynamic(() => import('./GeometricIcon'), { ssr: false });
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -9,7 +12,11 @@ const navLinks = [
   { href: '#contact', label: 'Contact' },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  onToggleSidebar: () => void;
+}
+
+export default function Header({ onToggleSidebar }: HeaderProps) {
   const [activeSection, setActiveSection] = useState('');
 
   // Intersection Observer for active section highlighting
@@ -38,7 +45,16 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
       <div className="mx-auto px-10 py-4">
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between">
+          {/* Geometric Icon - Sidebar Toggle */}
+          <button
+            onClick={onToggleSidebar}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            aria-label="Toggle sidebar"
+          >
+            <GeometricIcon />
+          </button>
+
           {/* Navigation */}
           <nav>
             <ul className="flex items-center gap-1 sm:gap-2">

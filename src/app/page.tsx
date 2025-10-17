@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import Background from '@/components/Background';
@@ -10,28 +10,71 @@ import SkillCard from '@/components/SkillCard';
 import ExperienceCard from '@/components/ExperienceCard';
 
 export default function Home() {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [isTerminalExpanded, setIsTerminalExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Lock body scroll when sidebar is open on mobile
+  useEffect(() => {
+    if (isMobile && isSidebarVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobile, isSidebarVisible]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarVisible(false);
+  };
+
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <Background />
-      <Header />
+      <Header onToggleSidebar={toggleSidebar} />
 
       <div className="flex">
         <Sidebar
+          isVisible={isSidebarVisible}
           isExpanded={isTerminalExpanded}
           onExpand={() => setIsTerminalExpanded(true)}
           onCollapse={() => setIsTerminalExpanded(false)}
           onContactClick={scrollToContact}
+          onClose={closeSidebar}
         />
 
-        {/* Main Content - with left margin on large screens */}
+        {/* Main Content - with left margin when sidebar visible on desktop */}
         <div
-          className={`flex-1 transition-all duration-300 ${isTerminalExpanded ? 'lg:ml-[700px]' : 'lg:ml-96'}`}
+          className={`flex-1 transition-all duration-300 ${
+            isSidebarVisible 
+              ? isTerminalExpanded 
+                ? 'lg:ml-[700px]' 
+                : 'lg:ml-96'
+              : 'lg:ml-0'
+          }`}
         >
           {/* Hero Section */}
           <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
