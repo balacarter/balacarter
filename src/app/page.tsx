@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import ContactForm from '@/components/ContactForm';
+import Terminal from '@/components/Terminal';
 
 export default function Home() {
   return (
@@ -8,18 +9,19 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
-            Bala Carter
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8">
-            Software Engineer
-          </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Frontend specialist transitioning to full-stack development. 
-            Building modern web experiences with React, TypeScript, and Node.js.
-          </p>
+      <section className="min-h-screen flex items-center justify-center px-6 py-20">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+              Bala Carter
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">
+              Software Engineer
+            </p>
+          </div>
+          
+          {/* Interactive Terminal */}
+          <Terminal />
         </div>
       </section>
 
