@@ -21,11 +21,11 @@ export default function ExperienceCard({
     <div className="group relative rounded-xl border border-gray-200/50 dark:border-gray-700/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:backdrop-blur-md hover:bg-white/10 dark:hover:bg-gray-800/30 hover:shadow-xl hover:shadow-cyan-500/10">
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
+
       <div className="relative z-10">
         {/* Header - Company and Period */}
         <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-          <div className="flex-1 min-w-0">
+          <div className="min-w-0">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
               {company}
             </h3>
@@ -49,14 +49,15 @@ export default function ExperienceCard({
             // Bold text before "by" if it exists
             const parts = achievement.split(' by ');
             const hasBoldSection = parts.length > 1;
-            
+
             return (
               <li key={index} className="flex items-start gap-3">
                 <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2"></span>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   {hasBoldSection ? (
                     <>
-                      <span className="font-bold">{parts[0]}</span> by {parts[1]}
+                      <span className="font-bold">{parts[0]}</span> by{' '}
+                      {parts[1]}
                     </>
                   ) : (
                     achievement

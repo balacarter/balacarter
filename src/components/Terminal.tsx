@@ -242,7 +242,7 @@ export default function Terminal() {
             width: '350%',
             height: '300%',
             top: '-300px',
-            left: '-460px',
+            left: '-590px',
           }}
         ></div>
 

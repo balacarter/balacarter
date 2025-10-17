@@ -125,12 +125,10 @@ export default function Home() {
                 <div className="prose dark:prose-invert max-w-none">
                   <p className="text-lg leading-relaxed mb-6">
                     Originally from South Africa, I am a dedicated{' '}
-                    <span className="font-bold">
-                      Frontend Software Engineer
-                    </span>{' '}
-                    based in Los Angeles with a deep, lifelong passion for
-                    programming that first ignited in childhood through game
-                    modding and website development. Equipped with a{' '}
+                    <span className="font-bold">Software Engineer</span> based
+                    in Los Angeles with a deep, lifelong passion for programming
+                    that first ignited in childhood through game modding and
+                    website development. Equipped with a{' '}
                     <span className="font-bold">B.S. in Computer Science</span>,
                     I specialize in crafting elegant, intuitive web experiences
                     using modern technologies, primarily{' '}

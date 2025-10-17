@@ -43,6 +43,9 @@ export async function sendContactEmail(data: ContactFormData) {
     return { success: true, data: result };
   } catch (error) {
     console.error('Failed to send email:', error);
-    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
   }
 }
