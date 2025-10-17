@@ -239,7 +239,7 @@ export default function Terminal() {
         <div
           className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
           style={{
-            width: '300%',
+            width: '350%',
             height: '300%',
             top: '-300px',
             left: '-460px',

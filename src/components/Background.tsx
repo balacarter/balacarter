@@ -21,9 +21,9 @@ export default function Background() {
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base dark background */}
       <div className="absolute inset-0 bg-[var(--bg-base)]" />
-      
+
       {/* Grid pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.15]"
         style={{
           backgroundImage: `
@@ -33,10 +33,10 @@ export default function Background() {
           backgroundSize: '50px 50px',
         }}
       />
-      
+
       {/* Cursor glow effect */}
       <div
-        className="absolute w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
+        className="absolute w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
         style={{
           left: `${mousePosition.x}px`,
           top: `${mousePosition.y}px`,
@@ -44,7 +44,7 @@ export default function Background() {
           opacity: 0.4,
         }}
       />
-      
+
       {/* Illuminated grid overlay - follows cursor */}
       <div
         className="absolute inset-0"

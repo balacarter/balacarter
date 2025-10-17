@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-const GeometricIcon = dynamic(() => import('./GeometricIcon'), { ssr: false });
+import InitialsIcon from './InitialsIcon';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -43,16 +41,16 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-      <div className="mx-auto px-10 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+      <div className="mx-auto px-4 md:px-10 py-4">
         <div className="flex items-center justify-between">
-          {/* Geometric Icon - Sidebar Toggle */}
+          {/* Initials Icon - Sidebar Toggle */}
           <button
             onClick={onToggleSidebar}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             aria-label="Toggle sidebar"
           >
-            <GeometricIcon />
+            <InitialsIcon />
           </button>
 
           {/* Navigation */}
