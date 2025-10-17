@@ -59,8 +59,7 @@ export default function Sidebar({
         >
           {/* Header */}
           <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800 relative">
-            {/* Mobile Close Button */}
-
+            {/* Close Button */}
             <button
               onClick={onClose}
               className="absolute top-0 right-0 p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"

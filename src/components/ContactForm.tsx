@@ -40,7 +40,11 @@ export default function ContactForm() {
       setFormData({ name: '', email: '', subject: '', message: '' });
       
       // Reset success message after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        setStatus((currentStatus) => 
+          currentStatus === 'success' ? 'idle' : currentStatus
+        );
+      }, 5000);
     } catch (error) {
       setStatus('error');
       
@@ -49,6 +53,12 @@ export default function ContactForm() {
       } else {
         setErrorMessage('Unable to send message. Please try again.');
       }
+      
+      // Reset error message after 10 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 10000);
     }
   };
 
@@ -64,10 +74,11 @@ export default function ContactForm() {
 
     // Clear field error on change
     if (fieldErrors[name as keyof ContactFormData]) {
-      setFieldErrors((prev: Partial<Record<keyof ContactFormData, string>>) => ({
-        ...prev,
-        [name]: undefined,
-      }));
+      setFieldErrors((prev) => {
+        const updated = { ...prev };
+        delete updated[name as keyof ContactFormData];
+        return updated;
+      });
     }
   };
 

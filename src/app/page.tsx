@@ -87,7 +87,7 @@ export default function Home() {
             <div className="w-full max-w-7xl mx-auto relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Hero Text Column */}
-                <div className="flex flex-col justify-center gap-16 space-y-8 col-span-2 max-w-sm md:max-w-lg lg:max-w-3xl">
+                <div className="flex flex-col justify-center space-y-8 col-span-2 max-w-sm md:max-w-lg lg:max-w-3xl">
                   {/* Name and Title - Above Hero Text (Hidden on Desktop) */}
                   {!isSidebarVisible && (
                     <div className="mb-4">
@@ -108,9 +108,6 @@ export default function Home() {
                     <span className="text-[#fbbf24]">FRIENDLY</span> DESIGNS.
                   </h1>
                 </div>
-
-                {/* Empty Column for Balance */}
-                <div></div>
               </div>
             </div>
           </section>
