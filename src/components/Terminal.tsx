@@ -247,12 +247,12 @@ export default function Terminal() {
         ></div>
 
         {/* Terminal container */}
-        <div className="relative rounded-[10px] shadow-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800/95">
+        <div className="relative rounded-[10px] shadow-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
           {/* Subtle accent glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none animate-[glow-pulse_4s_ease-in-out_infinite]"></div>
 
           {/* Terminal Header */}
-          <div className="relative bg-gradient-to-r from-gray-800/95 to-gray-800/90 px-4 py-3 flex items-center gap-2 border-b border-gray-700/50 backdrop-blur-sm">
+          <div className="relative bg-gradient-to-r from-gray-800 to-gray-800 px-4 py-3 flex items-center gap-2 border-b border-gray-700/50 backdrop-blur-sm">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/80 transition-all cursor-pointer"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/50 hover:shadow-yellow-500/80 transition-all cursor-pointer"></div>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+import Background from '@/components/Background';
 import ContactForm from '@/components/ContactForm';
 import SkillCard from '@/components/SkillCard';
 import ExperienceCard from '@/components/ExperienceCard';
@@ -15,7 +16,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground relative">
+      <Background />
       <Header />
 
       <div className="flex">

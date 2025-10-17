@@ -12,7 +12,7 @@ interface SidebarProps {
 export default function Sidebar({ isExpanded, onExpand, onCollapse, onContactClick }: SidebarProps) {
   return (
     <aside
-      className={`hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ${isExpanded ? 'w-[700px]' : 'w-96'}`}
+      className={`hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ${isExpanded ? 'w-[700px]' : 'w-96'}`}
     >
       {/* Minimal Container */}
       <div
