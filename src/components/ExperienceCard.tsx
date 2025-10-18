@@ -18,26 +18,42 @@ export default function ExperienceCard({
   skills,
 }: ExperienceCardProps) {
   return (
-    <div className="group relative rounded-xl border border-gray-200/50 dark:border-gray-700/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:backdrop-blur-md hover:bg-white/10 dark:hover:bg-gray-800/30 hover:shadow-xl hover:shadow-cyan-500/10">
+    <div 
+      className="group relative rounded-xl border backdrop-blur-md p-6 transition-all duration-300"
+      style={{ 
+        backgroundColor: 'var(--glass-bg)', 
+        borderColor: 'var(--glass-border)'
+      }}
+    >
       {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div 
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.05), rgba(74, 139, 92, 0.05))' }}
+      ></div>
 
       <div className="relative z-10">
         {/* Header - Company and Period */}
         <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
           <div className="min-w-0">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+            <h3 className="text-2xl font-bold text-foreground mb-1 transition-colors">
               {company}
             </h3>
-            <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-1">
+            <p className="text-lg font-semibold text-foreground mb-1">
               {title}
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
               {location}
             </p>
           </div>
           <div className="flex-shrink-0">
-            <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 text-sm font-semibold text-cyan-700 dark:text-cyan-300">
+            <span 
+              className="inline-block px-4 py-2 rounded-full border text-sm font-semibold"
+              style={{ 
+                backgroundColor: 'rgba(251, 191, 36, 0.1)', 
+                borderColor: 'rgba(251, 191, 36, 0.2)',
+                color: 'var(--accent-primary)'
+              }}
+            >
               {period}
             </span>
           </div>
@@ -52,8 +68,8 @@ export default function ExperienceCard({
 
             return (
               <li key={index} className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2"></span>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2" style={{ backgroundColor: 'var(--accent-primary)' }}></span>
+                <p className="leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                   {hasBoldSection ? (
                     <>
                       <span className="font-bold">{parts[0]}</span> by{' '}
@@ -73,7 +89,22 @@ export default function ExperienceCard({
           {skills.map((skill, index) => (
             <span
               key={index}
-              className="px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300/50 dark:border-gray-600/50 hover:border-cyan-500/50 hover:from-cyan-500/10 hover:to-purple-500/10 hover:text-cyan-700 dark:hover:text-cyan-300 transition-all duration-200"
+              className="px-3 py-1 rounded-full text-xs font-medium border transition-all duration-200"
+              style={{ 
+                backgroundColor: 'rgba(74, 139, 92, 0.1)', 
+                color: 'var(--text-muted)',
+                borderColor: 'var(--glass-border)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(251, 191, 36, 0.5)';
+                e.currentTarget.style.backgroundColor = 'rgba(251, 191, 36, 0.1)';
+                e.currentTarget.style.color = 'var(--accent-primary)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--glass-border)';
+                e.currentTarget.style.backgroundColor = 'rgba(74, 139, 92, 0.1)';
+                e.currentTarget.style.color = 'var(--text-muted)';
+              }}
             >
               {skill}
             </span>

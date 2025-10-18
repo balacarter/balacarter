@@ -41,7 +41,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
       <div className="mx-auto px-4 md:px-10 py-4">
         <div className="flex items-center justify-between">
           {/* Initials Icon - Sidebar Toggle */}
@@ -62,9 +62,13 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                   aria-label="Home"
                   className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeSection === 'hero'
-                      ? 'bg-gray-200 dark:bg-gray-800 text-foreground'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-foreground hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                      ? 'text-foreground'
+                      : 'hover:text-foreground'
                   }`}
+                  style={activeSection === 'hero' 
+                    ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                    : { color: 'var(--text-muted)' }
+                  }
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -87,9 +91,13 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                     href={link.href}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       activeSection === link.href.slice(1)
-                        ? 'bg-gray-200 dark:bg-gray-800 text-foreground'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-foreground hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                        ? 'text-foreground'
+                        : 'hover:text-foreground'
                     }`}
+                    style={activeSection === link.href.slice(1)
+                      ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                      : { color: 'var(--text-muted)' }
+                    }
                   >
                     {link.label}
                   </a>

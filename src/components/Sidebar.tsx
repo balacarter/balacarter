@@ -44,11 +44,12 @@ export default function Sidebar({
       )}
 
       <aside
-        className={`fixed left-0 top-16 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-800 transition-all duration-300 z-40 ${
+        className={`fixed left-0 top-16 h-[calc(100vh-4rem)] backdrop-blur-md border-r transition-all duration-300 z-40 ${
           isMobile
             ? `w-[90%] ${isVisible ? 'translate-x-0' : '-translate-x-full'}`
             : `${isVisible ? 'translate-x-0' : '-translate-x-full'} ${isExpanded ? 'w-[700px]' : 'w-96'}`
         }`}
+        style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}
       >
         {/* Minimal Container */}
         <div
@@ -62,11 +63,12 @@ export default function Sidebar({
           tabIndex={!isMobile ? 0 : undefined}
         >
           {/* Header */}
-          <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800 relative">
+          <div className="mb-6 pb-6 border-b relative" style={{ borderColor: 'var(--glass-border)' }}>
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-0 right-0 p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="absolute top-0 right-0 p-2 hover:text-foreground transition-colors"
+              style={{ color: 'var(--text-muted)' }}
               aria-label="Close sidebar"
             >
               <svg
@@ -94,7 +96,8 @@ export default function Sidebar({
                 href="https://linkedin.com/in/balacarter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gray-900 dark:hover:border-white hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="flex items-center justify-center w-10 h-10 rounded-lg border hover:text-foreground transition-colors"
+                style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
                 aria-label="LinkedIn"
                 title="LinkedIn"
               >
@@ -111,7 +114,8 @@ export default function Sidebar({
                 href="https://github.com/balacarter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gray-900 dark:hover:border-white hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="flex items-center justify-center w-10 h-10 rounded-lg border hover:text-foreground transition-colors"
+                style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
                 aria-label="GitHub"
                 title="GitHub"
               >
@@ -126,7 +130,8 @@ export default function Sidebar({
 
               <button
                 onClick={onContactClick}
-                className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gray-900 dark:hover:border-white hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="flex items-center justify-center w-10 h-10 rounded-lg border hover:text-foreground transition-colors"
+                style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
                 aria-label="Contact"
                 title="Contact"
               >
@@ -153,11 +158,11 @@ export default function Sidebar({
           </div>
 
           {/* Easter Egg Footer */}
-          <div className="mt-auto pt-6 border-t border-gray-200 dark:border-gray-800">
-            <p className="text-xs text-gray-500 dark:text-gray-500 text-center font-mono">
+          <div className="mt-auto pt-6 border-t" style={{ borderColor: 'var(--glass-border)' }}>
+            <p className="text-xs text-center font-mono" style={{ color: 'var(--text-muted)' }}>
               <span className="opacity-60">// TODO: Add more easter eggs</span>
               <br />
-              <span className="text-[#fbbf24] opacity-80">⚡ Powered by curiosity & caffeine ☕</span>
+              <span style={{ color: 'var(--accent-primary)' }} className="opacity-80">⚡ Powered by curiosity & caffeine ☕</span>
             </p>
           </div>
         </div>

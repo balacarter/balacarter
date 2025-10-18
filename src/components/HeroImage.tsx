@@ -62,7 +62,7 @@ function LargeGeometricShape({ scrollRotation }: ShapeProps) {
         wireframe={true}
         wireframeLinewidth={2}
         emissive="#fbbf24"
-        emissiveIntensity={0.5}
+        emissiveIntensity={0.6}
         metalness={0.9}
         roughness={0.1}
         opacity={1}

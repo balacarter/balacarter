@@ -7,13 +7,24 @@
 }
 
 :root {
-  --background: #0c070f;
-  --foreground: #ededed;
+  /* Deep Dark Bottle Green Theme */
+  --background: #050f0a;
+  --foreground: #e8f4f0;
 
   /* Background effect */
-  --bg-base: #0c070f;
-  --grid-color: rgba(255, 255, 255, 0.06);
-  --glow-color: rgba(188, 125, 118, 0.35);
+  --bg-base: #050f0a;
+  --grid-color: rgba(74, 139, 92, 0.08);
+  --glow-color: rgba(74, 139, 92, 0.25);
+  
+  /* Glass UI */
+  --glass-bg: rgba(74, 139, 92, 0.08);
+  --glass-border: rgba(74, 139, 92, 0.2);
+  
+  /* Accent colors */
+  --accent-primary: #fbbf24;
+  --accent-secondary: #fcd34d;
+  --accent-green: #4a8b5c;
+  --text-muted: rgba(232, 244, 240, 0.6);
 }
 
 html {

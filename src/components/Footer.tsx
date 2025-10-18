@@ -4,29 +4,32 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 border-t border-gray-200 dark:border-gray-800 bg-background/95 backdrop-blur-sm">
+    <footer className="relative z-10 border-t backdrop-blur-md" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
       <div className="max-w-4xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           {/* About Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-3">
               About
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
               Software Engineer based in Los Angeles, specializing in React, TypeScript, and building accessible web experiences.
             </p>
           </div>
 
           {/* Quick Links Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-3">
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#about"
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#fbbf24] transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                 >
                   About
                 </a>
@@ -34,7 +37,10 @@ export default function Footer() {
               <li>
                 <a
                   href="#skills"
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#fbbf24] transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                 >
                   Skills
                 </a>
@@ -42,7 +48,10 @@ export default function Footer() {
               <li>
                 <a
                   href="#experience"
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#fbbf24] transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                 >
                   Experience
                 </a>
@@ -50,7 +59,10 @@ export default function Footer() {
               <li>
                 <a
                   href="#contact"
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#fbbf24] transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                 >
                   Contact
                 </a>
@@ -60,7 +72,7 @@ export default function Footer() {
 
           {/* Connect Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-3">
               Connect
             </h3>
             <div className="flex gap-3">
@@ -68,7 +80,10 @@ export default function Footer() {
                 href="https://linkedin.com/in/balacarter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-[#fbbf24] hover:text-[#fbbf24] transition-colors"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border transition-colors"
+                style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-primary)'; e.currentTarget.style.color = 'var(--accent-primary)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--glass-border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
                 aria-label="LinkedIn"
                 title="LinkedIn"
               >
@@ -85,7 +100,10 @@ export default function Footer() {
                 href="https://github.com/balacarter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-[#fbbf24] hover:text-[#fbbf24] transition-colors"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border transition-colors"
+                style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-primary)'; e.currentTarget.style.color = 'var(--accent-primary)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--glass-border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
                 aria-label="GitHub"
                 title="GitHub"
               >
@@ -102,14 +120,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
+        <div className="pt-6 border-t" style={{ borderColor: 'var(--glass-border)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
               © {currentYear} Bala Carter. All rights reserved.
             </p>
-            <p className="text-xs text-gray-500 dark:text-gray-500 font-mono">
-              Built with <span className="text-[#fbbf24]">Next.js</span> &{' '}
-              <span className="text-[#fbbf24]">TypeScript</span>
+            <p className="text-xs font-mono" style={{ color: 'var(--text-muted)' }}>
+              Built with <span style={{ color: 'var(--accent-primary)' }}>Next.js</span> &{' '}
+              <span style={{ color: 'var(--accent-primary)' }}>TypeScript</span>
             </p>
           </div>
         </div>

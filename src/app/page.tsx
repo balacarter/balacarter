@@ -93,16 +93,16 @@ export default function Home() {
                   {!isSidebarVisible && (
                     <div className="mb-4">
                       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2">
-                        <span className="inline-block bg-[#fbbf24] text-black px-2 py-1">BALA CARTER</span>
+                        <span className="inline-block px-2 py-1" style={{ backgroundColor: 'var(--accent-primary)', color: 'var(--background)' }}>BALA CARTER</span>
                       </h2>
                     </div>
                   )}
 
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-                    <span className="text-[#fbbf24]">SOFTWARE ENGINEER</span>{' '}
+                    <span style={{ color: 'var(--accent-primary)' }}>SOFTWARE ENGINEER</span>{' '}
                     WITH A PASSION FOR{' '}
-                    <span className="text-[#fbbf24]">INNOVATIVE</span> AND HUMAN FRIENDLY{' '}
-                    <span className="text-[#fbbf24]">INTERFACES</span>
+                    <span style={{ color: 'var(--accent-primary)' }}>INNOVATIVE</span> AND HUMAN FRIENDLY{' '}
+                    <span style={{ color: 'var(--accent-primary)' }}>INTERFACES</span>
                   </h1>
                 </div>
               </div>
@@ -114,9 +114,9 @@ export default function Home() {
             {/* About Section */}
             <section id="about" className="min-h-screen py-20">
               {/* Glass Background Container - Only Around Text */}
-              <div className="bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-lg p-8">
+              <div className="backdrop-blur-md border rounded-lg p-8" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
                 <h2 className="text-3xl font-bold mb-6">About</h2>
-                <div className="prose dark:prose-invert max-w-none">
+                <div className="prose max-w-none">
                   <p className="text-lg leading-relaxed mb-6">
                     Originally from South Africa, I am a dedicated{' '}
                     <span className="font-bold">Software Engineer</span> based
