@@ -160,8 +160,6 @@ export default function Sidebar({
           {/* Easter Egg Footer */}
           <div className="mt-auto pt-6 border-t" style={{ borderColor: 'var(--glass-border)' }}>
             <p className="text-xs text-center font-mono" style={{ color: 'var(--text-muted)' }}>
-              <span className="opacity-60">// TODO: Add more easter eggs</span>
-              <br />
               <span style={{ color: 'var(--accent-primary)' }} className="opacity-80">⚡ Powered by curiosity & caffeine ☕</span>
             </p>
           </div>
