@@ -54,7 +54,11 @@ export default function Sidebar({
         <div
           className="h-full p-8 overflow-y-auto flex flex-col"
           onClick={!isMobile ? onExpand : undefined}
-          onBlur={!isMobile ? onCollapse : undefined}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+              !isMobile && onCollapse();
+            }
+          }}
           tabIndex={!isMobile ? 0 : undefined}
         >
           {/* Header */}
