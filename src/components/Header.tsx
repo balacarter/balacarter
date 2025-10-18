@@ -56,6 +56,31 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           {/* Navigation */}
           <nav>
             <ul className="flex items-center gap-1 sm:gap-2">
+              <li>
+                <a
+                  href="#hero"
+                  aria-label="Home"
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    activeSection === 'hero'
+                      ? 'bg-gray-200 dark:bg-gray-800 text-foreground'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-foreground hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                  }`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4"
+                  >
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                </a>
+              </li>
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a

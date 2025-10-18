@@ -84,24 +84,11 @@ export default function Sidebar({
               </svg>
             </button>
 
-            <h1 className="text-3xl font-bold tracking-tight mb-2">
+            <h1 className="text-3xl font-bold tracking-tight mb-4">
               Bala Carter
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Software Engineer
-            </p>
-          </div>
-
-          {/* Terminal */}
-          <div className="mb-6 flex-1">
-            <Terminal />
-          </div>
-
-          {/* Social Links - pushed to bottom */}
-          <div className="mt-auto pt-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Connect
-            </h2>
+            
+            {/* Social Links */}
             <div className="flex gap-3">
               <a
                 href="https://linkedin.com/in/balacarter"
@@ -158,6 +145,20 @@ export default function Sidebar({
                 </svg>
               </button>
             </div>
+          </div>
+
+          {/* Terminal */}
+          <div className="mb-6 flex-1">
+            <Terminal />
+          </div>
+
+          {/* Easter Egg Footer */}
+          <div className="mt-auto pt-6 border-t border-gray-200 dark:border-gray-800">
+            <p className="text-xs text-gray-500 dark:text-gray-500 text-center font-mono">
+              <span className="opacity-60">// TODO: Add more easter eggs</span>
+              <br />
+              <span className="text-[#fbbf24] opacity-80">⚡ Powered by curiosity & caffeine ☕</span>
+            </p>
           </div>
         </div>
       </aside>

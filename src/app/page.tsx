@@ -8,6 +8,7 @@ import HeroImage from '@/components/HeroImage';
 import ContactForm from '@/components/ContactForm';
 import SkillCard from '@/components/SkillCard';
 import ExperienceCard from '@/components/ExperienceCard';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -80,7 +81,7 @@ export default function Home() {
           }`}
         >
           {/* Hero Section */}
-          <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+          <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
             {/* Background Geometric Shape */}
             <HeroImage />
 
@@ -92,20 +93,16 @@ export default function Home() {
                   {!isSidebarVisible && (
                     <div className="mb-4">
                       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2">
-                        Bala Carter
+                        <span className="inline-block bg-[#fbbf24] text-black px-2 py-1">BALA CARTER</span>
                       </h2>
-                      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400">
-                        Software Engineer
-                      </p>
                     </div>
                   )}
 
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-                    I AM A{' '}
                     <span className="text-[#fbbf24]">SOFTWARE ENGINEER</span>{' '}
                     WITH A PASSION FOR{' '}
-                    <span className="text-[#fbbf24]">INNOVATION</span> AND HUMAN{' '}
-                    <span className="text-[#fbbf24]">FRIENDLY</span> DESIGNS.
+                    <span className="text-[#fbbf24]">INNOVATIVE</span> AND HUMAN FRIENDLY{' '}
+                    <span className="text-[#fbbf24]">INTERFACES</span>
                   </h1>
                 </div>
               </div>
@@ -287,6 +284,9 @@ export default function Home() {
               <ContactForm />
             </section>
           </main>
+
+          {/* Footer */}
+          <Footer />
         </div>
       </div>
     </div>
