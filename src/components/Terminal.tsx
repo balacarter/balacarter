@@ -269,7 +269,8 @@ export default function Terminal() {
           <div
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
-            className="relative p-4 flex-1 overflow-y-auto font-mono text-sm cursor-text bg-black/10 min-h-0"
+            className="relative p-4 flex-1 overflow-y-auto font-mono cursor-text bg-black/10 min-h-0"
+            style={{ fontSize: '16px' }}
           >
             {lines.map((line, i) => (
               <div
@@ -296,6 +297,7 @@ export default function Terminal() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="flex-1 bg-transparent outline-none text-gray-100 caret-green-400 placeholder:text-gray-600"
+                style={{ fontSize: '16px' }}
                 autoFocus
                 spellCheck={false}
                 autoComplete="off"
