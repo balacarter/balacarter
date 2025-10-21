@@ -83,7 +83,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="max-w-2xl space-y-6">
+    <form onSubmit={handleSubmit} noValidate className="max-w-2xl space-y-6" aria-label="Contact form">
       {/* Name Field */}
       <div>
         <label
@@ -99,6 +99,9 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          aria-required="true"
+          aria-invalid={!!fieldErrors.name}
+          aria-describedby={fieldErrors.name ? 'name-error' : undefined}
           className={`w-full px-4 py-3 bg-background border rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all ${
             fieldErrors.name
               ? 'border-red-500 dark:border-red-500 focus:ring-red-400'
@@ -108,7 +111,7 @@ export default function ContactForm() {
           disabled={status === 'submitting'}
         />
         {fieldErrors.name && (
-          <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+          <p id="name-error" className="mt-1 text-xs text-red-600 dark:text-red-400">
             {fieldErrors.name}
           </p>
         )}
@@ -129,6 +132,9 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          aria-required="true"
+          aria-invalid={!!fieldErrors.email}
+          aria-describedby={fieldErrors.email ? 'email-error' : undefined}
           className={`w-full px-4 py-3 bg-background border rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all ${
             fieldErrors.email
               ? 'border-red-500 dark:border-red-500 focus:ring-red-400'
@@ -138,7 +144,7 @@ export default function ContactForm() {
           disabled={status === 'submitting'}
         />
         {fieldErrors.email && (
-          <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+          <p id="email-error" className="mt-1 text-xs text-red-600 dark:text-red-400">
             {fieldErrors.email}
           </p>
         )}
@@ -158,6 +164,8 @@ export default function ContactForm() {
           name="subject"
           value={formData.subject}
           onChange={handleChange}
+          aria-invalid={!!fieldErrors.subject}
+          aria-describedby={fieldErrors.subject ? 'subject-error' : undefined}
           className={`w-full px-4 py-3 bg-background border rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all ${
             fieldErrors.subject
               ? 'border-red-500 dark:border-red-500 focus:ring-red-400'
@@ -167,7 +175,7 @@ export default function ContactForm() {
           disabled={status === 'submitting'}
         />
         {fieldErrors.subject && (
-          <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+          <p id="subject-error" className="mt-1 text-xs text-red-600 dark:text-red-400">
             {fieldErrors.subject}
           </p>
         )}
@@ -187,6 +195,9 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
+          aria-required="true"
+          aria-invalid={!!fieldErrors.message}
+          aria-describedby={fieldErrors.message ? 'message-error' : undefined}
           rows={6}
           className={`w-full px-4 py-3 bg-background border rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all resize-none ${
             fieldErrors.message
@@ -197,7 +208,7 @@ export default function ContactForm() {
           disabled={status === 'submitting'}
         />
         {fieldErrors.message && (
-          <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+          <p id="message-error" className="mt-1 text-xs text-red-600 dark:text-red-400">
             {fieldErrors.message}
           </p>
         )}
@@ -205,7 +216,7 @@ export default function ContactForm() {
 
       {/* Success Message */}
       {status === 'success' && (
-        <div className="px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-800 rounded">
+        <div className="px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-800 rounded" role="status" aria-live="polite">
           <p className="text-sm text-green-800 dark:text-green-200">
             Message sent successfully
           </p>
@@ -214,7 +225,7 @@ export default function ContactForm() {
 
       {/* Error Message */}
       {status === 'error' && errorMessage && (
-        <div className="px-3 py-2 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-800 rounded">
+        <div className="px-3 py-2 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-800 rounded" role="alert" aria-live="assertive">
           <p className="text-sm text-red-800 dark:text-red-200">
             {errorMessage}
           </p>
@@ -225,9 +236,23 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full sm:w-auto px-8 py-3 bg-foreground text-background font-medium rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+        className="group relative w-full sm:w-auto px-8 py-3 font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, var(--accent-primary) 0%, #d4af37 100%)',
+          color: 'var(--background)',
+          boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)',
+        }}
       >
-        {status === 'submitting' ? 'Sending...' : 'Send Message'}
+        <span className="relative z-10">
+          {status === 'submitting' ? 'Sending...' : 'Send Message'}
+        </span>
+        {/* Shine effect on hover */}
+        <div 
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: 'linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%)',
+          }}
+        />
       </button>
     </form>
   );

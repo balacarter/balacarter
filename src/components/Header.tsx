@@ -41,7 +41,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)' }}>
       <div className="mx-auto px-4 md:px-10 py-4">
         <div className="flex items-center justify-between">
           {/* Initials Icon - Sidebar Toggle */}
@@ -55,20 +55,18 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
           {/* Navigation */}
           <nav>
-            <ul className="flex items-center gap-1 sm:gap-2">
+            <ul className="flex items-center gap-0.5 sm:gap-2">
               <li>
                 <a
                   href="#hero"
                   aria-label="Home"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === 'hero'
-                      ? 'text-foreground'
-                      : 'hover:text-foreground'
-                  }`}
-                  style={activeSection === 'hero' 
-                    ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
-                    : { color: 'var(--text-muted)' }
-                  }
+                  className="flex items-center px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  style={{
+                    ...(activeSection === 'hero' 
+                      ? { color: 'var(--foreground)', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid' }
+                      : { color: 'var(--text-muted)', border: '1px solid transparent' }
+                    )
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,15 +87,13 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      activeSection === link.href.slice(1)
-                        ? 'text-foreground'
-                        : 'hover:text-foreground'
-                    }`}
-                    style={activeSection === link.href.slice(1)
-                      ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
-                      : { color: 'var(--text-muted)' }
-                    }
+                    className="px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                    style={{
+                      ...(activeSection === link.href.slice(1)
+                        ? { color: 'var(--foreground)', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid' }
+                        : { color: 'var(--text-muted)', border: '1px solid transparent' }
+                      )
+                    }}
                   >
                     {link.label}
                   </a>

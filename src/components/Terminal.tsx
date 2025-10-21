@@ -237,12 +237,14 @@ export default function Terminal() {
       <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900 flex-1 flex flex-col">
         {/* Rotating gradient background - sits behind due to z-index */}
         <div
-          className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
+          className="absolute animate-[spin_3s_linear_infinite]"
           style={{
-            width: '350%',
+            width: '300%',
             height: '300%',
-            top: '-300px',
-            left: '-590px',
+            top: '-100%',
+            left: '-100%',
+            background: 'conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000)',
+            borderRadius: '50%',
           }}
         ></div>
 
@@ -267,7 +269,8 @@ export default function Terminal() {
           <div
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
-            className="relative p-4 flex-1 overflow-y-auto font-mono text-sm cursor-text bg-black/10 min-h-0"
+            className="relative p-4 flex-1 overflow-y-auto font-mono cursor-text bg-black/10 min-h-0"
+            style={{ fontSize: '16px' }}
           >
             {lines.map((line, i) => (
               <div
@@ -294,6 +297,7 @@ export default function Terminal() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="flex-1 bg-transparent outline-none text-gray-100 caret-green-400 placeholder:text-gray-600"
+                style={{ fontSize: '16px' }}
                 autoFocus
                 spellCheck={false}
                 autoComplete="off"

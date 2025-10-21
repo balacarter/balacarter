@@ -6,13 +6,19 @@ import * as THREE from 'three';
 
 interface ShapeProps {
   scrollRotation: number;
+  scrollZoom: number;
 }
 
-function LargeGeometricShape({ scrollRotation }: ShapeProps) {
+function LargeGeometricShape({ scrollRotation, scrollZoom }: ShapeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const { pointer, raycaster, camera } = useThree();
   const [isHovered, setIsHovered] = useState(false);
   const morphTargetRef = useRef(0);
+  
+  // Apply scroll-based zoom to camera
+  useEffect(() => {
+    camera.position.z = 12 - scrollZoom;
+  }, [scrollZoom, camera]);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -74,10 +80,17 @@ function LargeGeometricShape({ scrollRotation }: ShapeProps) {
 
 export default function HeroImage() {
   const [scrollY, setScrollY] = useState(0);
+  const [scrollZoom, setScrollZoom] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const scroll = window.scrollY;
+      setScrollY(scroll);
+      // Calculate zoom: reach max at 80% of page height
+      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scroll / pageHeight;
+      const zoom = Math.min(scrollPercent / 0.9 * 2.8, 2.8); // Max zoom of 2.5 units at 80% scroll
+      setScrollZoom(zoom);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -96,7 +109,7 @@ export default function HeroImage() {
         />
         <pointLight position={[5, 5, 5]} intensity={1} color="#fbbf24" />
         <pointLight position={[-5, -5, 5]} intensity={0.7} color="#fef3c7" />
-        <LargeGeometricShape scrollRotation={scrollY} />
+        <LargeGeometricShape scrollRotation={scrollY} scrollZoom={scrollZoom} />
       </Canvas>
     </div>
   );
