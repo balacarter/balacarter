@@ -93,7 +93,7 @@ export default function Sidebar({
             {/* Social Links */}
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com/in/balacarter"
+                href="https://linkedin.com/in/bala-carter"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-lg border hover:text-foreground transition-colors"
@@ -128,8 +128,8 @@ export default function Sidebar({
                 </svg>
               </a>
 
-              <button
-                onClick={onContactClick}
+              <a
+                href='#contact'
                 className="flex items-center justify-center w-10 h-10 rounded-lg border hover:text-foreground transition-colors"
                 style={{ borderColor: 'var(--glass-border)', color: 'var(--text-muted)' }}
                 aria-label="Contact"
@@ -148,7 +148,7 @@ export default function Sidebar({
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
 

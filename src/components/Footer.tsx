@@ -77,7 +77,7 @@ export default function Footer() {
             </h3>
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com/in/balacarter"
+                href="https://linkedin.com/in/bala-carter"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-9 h-9 rounded-lg border transition-colors"
