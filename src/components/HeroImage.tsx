@@ -41,8 +41,8 @@ function LargeGeometricShape({ scrollRotation }: ShapeProps) {
     // Base rotation
     meshRef.current.rotation.y += 0.0008;
     
-    // Scroll-based X-axis rotation (reduced)
-    meshRef.current.rotation.x = scrollRotation * 0.0008;
+    // Scroll-based X-axis rotation (reduced for performance)
+    meshRef.current.rotation.x = scrollRotation * 0.0003;
     
     // Subtle cursor-based rotation (lerp for smooth movement, reduced)
     const targetRotationY = pointer.x * 0.15;
@@ -56,7 +56,7 @@ function LargeGeometricShape({ scrollRotation }: ShapeProps) {
 
   return (
     <mesh ref={meshRef} position={[6, 0, 0]}>
-      <icosahedronGeometry args={[10, 1]} />
+      <icosahedronGeometry args={[7, 1]} />
       <meshStandardMaterial
         color="#fef3c7"
         wireframe={true}

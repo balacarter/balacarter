@@ -8,17 +8,17 @@
 
 :root {
   /* Deep Dark Bottle Green Theme */
-  --background: #050f0a;
+  --background: #020a06;
   --foreground: #e8f4f0;
 
   /* Background effect */
-  --bg-base: #050f0a;
-  --grid-color: rgba(74, 139, 92, 0.08);
-  --glow-color: rgba(74, 139, 92, 0.25);
+  --bg-base: #020a06;
+  --grid-color: rgba(74, 139, 92, 0.06);
+  --glow-color: rgba(74, 139, 92, 0.2);
   
   /* Glass UI */
-  --glass-bg: rgba(74, 139, 92, 0.08);
-  --glass-border: rgba(74, 139, 92, 0.2);
+  --glass-bg: rgba(74, 139, 92, 0.04);
+  --glass-border: rgba(74, 139, 92, 0.15);
   
   /* Accent colors */
   --accent-primary: #fbbf24;
