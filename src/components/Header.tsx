@@ -55,28 +55,20 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
           {/* Navigation */}
           <nav>
-            <ul className="flex items-center gap-0.5 sm:gap-2">
+            <ul className="flex items-center gap-1 sm:gap-2">
               <li>
                 <a
                   href="#hero"
                   aria-label="Home"
-                  className="flex items-center px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none border"
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    activeSection === 'hero'
+                      ? 'text-foreground'
+                      : 'hover:text-foreground'
+                  }`}
                   style={activeSection === 'hero' 
-                    ? { color: 'var(--accent-primary)', backgroundColor: 'var(--glass-bg)', borderColor: 'var(--accent-primary)' }
-                    : { color: 'var(--accent-primary)', borderColor: 'transparent' }
+                    ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                    : { color: 'var(--text-muted)' }
                   }
-                  onMouseEnter={(e) => {
-                    if (activeSection !== 'hero') {
-                      e.currentTarget.style.backgroundColor = 'var(--glass-bg)';
-                      e.currentTarget.style.borderColor = 'var(--accent-primary)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (activeSection !== 'hero') {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.borderColor = 'transparent';
-                    }
-                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,23 +89,15 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none border"
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeSection === link.href.slice(1)
+                        ? 'text-foreground'
+                        : 'hover:text-foreground'
+                    }`}
                     style={activeSection === link.href.slice(1)
-                      ? { color: 'var(--accent-primary)', backgroundColor: 'var(--glass-bg)', borderColor: 'var(--accent-primary)' }
-                      : { color: 'var(--accent-primary)', borderColor: 'transparent' }
+                      ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                      : { color: 'var(--text-muted)' }
                     }
-                    onMouseEnter={(e) => {
-                      if (activeSection !== link.href.slice(1)) {
-                        e.currentTarget.style.backgroundColor = 'var(--glass-bg)';
-                        e.currentTarget.style.borderColor = 'var(--accent-primary)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (activeSection !== link.href.slice(1)) {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                        e.currentTarget.style.borderColor = 'transparent';
-                      }
-                    }}
                   >
                     {link.label}
                   </a>
