@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Bala Carter Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "/social.png",
         width: 1200,
         height: 630,
         alt: "Bala Carter - Software Engineer Portfolio",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bala Carter - Software Engineer",
     description: "React & TypeScript specialist building accessible, high-performance web experiences",
-    images: ["/og-image.png"],
+    images: ["/social.png"],
   },
   robots: {
     index: true,
@@ -60,7 +60,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
