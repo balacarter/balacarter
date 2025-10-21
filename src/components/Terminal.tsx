@@ -232,9 +232,9 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full h-full flex flex-col">
       {/* Rainbow border wrapper */}
-      <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900">
+      <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900 flex-1 flex flex-col">
         {/* Rotating gradient background - sits behind due to z-index */}
         <div
           className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
@@ -247,12 +247,12 @@ export default function Terminal() {
         ></div>
 
         {/* Terminal container */}
-        <div className="relative rounded-[10px] shadow-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
+        <div className="relative rounded-[10px] shadow-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 flex-1 flex flex-col">
           {/* Subtle accent glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none animate-[glow-pulse_4s_ease-in-out_infinite]"></div>
 
           {/* Terminal Header */}
-          <div className="relative bg-gradient-to-r from-gray-800 to-gray-800 px-4 py-3 flex items-center gap-2 border-b border-gray-700/50 backdrop-blur-sm">
+          <div className="relative bg-gradient-to-r from-gray-800 to-gray-800 px-4 py-3 flex items-center gap-2 border-b border-gray-700/50 backdrop-blur-sm flex-shrink-0">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-500/80 transition-all cursor-pointer"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/50 hover:shadow-yellow-500/80 transition-all cursor-pointer"></div>
@@ -267,7 +267,7 @@ export default function Terminal() {
           <div
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
-            className="relative p-4 h-96 overflow-y-auto font-mono text-sm cursor-text bg-black/10"
+            className="relative p-4 flex-1 overflow-y-auto font-mono text-sm cursor-text bg-black/10 min-h-0"
           >
             {lines.map((line, i) => (
               <div
@@ -302,15 +302,6 @@ export default function Terminal() {
           </div>
         </div>
       </div>
-
-      {/* Hint */}
-      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-        Try typing{' '}
-        <code className="bg-gray-800/80 px-2 py-1 rounded text-green-400 border border-gray-700/50 font-mono text-xs">
-          help
-        </code>{' '}
-        to get started
-      </p>
     </div>
   );
 }

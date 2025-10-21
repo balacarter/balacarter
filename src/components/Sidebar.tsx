@@ -53,7 +53,7 @@ export default function Sidebar({
       >
         {/* Minimal Container */}
         <div
-          className="h-full p-8 overflow-y-auto flex flex-col"
+          className="h-full p-8 flex flex-col overflow-hidden"
           onClick={!isMobile ? onExpand : undefined}
           onBlur={(e) => {
             if (!e.currentTarget.contains(e.relatedTarget as Node)) {
@@ -153,7 +153,7 @@ export default function Sidebar({
           </div>
 
           {/* Terminal */}
-          <div className="mb-6 flex-1">
+          <div className="flex-1 min-h-0 mb-6">
             <Terminal />
           </div>
 
