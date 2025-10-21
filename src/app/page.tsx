@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import Background from '@/components/Background';
@@ -16,11 +16,20 @@ import { useScrollLock } from '@/hooks/useScrollLock';
 
 export default function Home() {
   const isMobile = useMediaQuery('(max-width: 1023px)');
-  const [isSidebarVisible, setIsSidebarVisible] = useState(!isMobile);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [isTerminalExpanded, setIsTerminalExpanded] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-  // Lock body scroll when sidebar is open on mobile
-  useScrollLock(isMobile && isSidebarVisible);
+  // Set initial sidebar state based on screen size after mount
+  useEffect(() => {
+    if (!isInitialized) {
+      setIsSidebarVisible(!isMobile);
+      setIsInitialized(true);
+    }
+  }, [isMobile, isInitialized]);
+
+  // Lock body scroll when sidebar is open on mobile (only after initialization)
+  useScrollLock(isInitialized && isMobile && isSidebarVisible);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

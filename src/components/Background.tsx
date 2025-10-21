@@ -6,13 +6,34 @@ export default function Background() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    let rafId: number | null = null;
+    let lastX = 0;
+    let lastY = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      // Throttle updates using requestAnimationFrame
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          setMousePosition({ x: lastX, y: lastY });
+          rafId = null;
+        });
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    // Only add mousemove listener on non-touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (!isTouchDevice) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    }
 
     return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
