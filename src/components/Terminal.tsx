@@ -1,103 +1,12 @@
 'use client';
 
 import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { TERMINAL_COMMANDS, VALID_SECTIONS, ValidSection } from '@/data/terminal-commands';
 
 interface TerminalLine {
   type: 'input' | 'output' | 'error';
   content: string;
 }
-
-interface CommandResult {
-  output: string[];
-  error?: boolean;
-}
-
-// Safe command definitions - no code execution
-const COMMANDS: Record<string, CommandResult> = {
-  help: {
-    output: [
-      'Available commands:',
-      '  about          - Learn about me',
-      '  skills         - View my technical skills',
-      '  experience     - See my work experience',
-      '  projects       - Check out my projects',
-      '  contact        - Get in touch',
-      '  navigate <section> - Jump to a section (about, skills, experience, contact)',
-      '  clear          - Clear the terminal',
-      '  help           - Show this help message',
-    ],
-  },
-  about: {
-    output: [
-      'Bala Carter',
-      'Software Engineer',
-      '',
-      'Frontend specialist transitioning to full-stack development.',
-      'Passionate about building modern, performant web applications.',
-      '',
-      'Currently working with React, TypeScript, and Node.js.',
-    ],
-  },
-  skills: {
-    output: [
-      'Technical Skills:',
-      '',
-      '  Frontend:',
-      '    • React, Preact, Next.js',
-      '    • TypeScript, JavaScript',
-      '    • HTML5, CSS3, Tailwind CSS',
-      '    • Responsive Design, Accessibility',
-      '',
-      '  Backend (Learning):',
-      '    • Node.js, Express',
-      '    • Python, FastAPI',
-      '    • RESTful APIs',
-      '',
-      '  Tools & Other:',
-      '    • Git, GitHub',
-      '    • VS Code, Windsurf',
-      '    • Performance Optimization',
-    ],
-  },
-  experience: {
-    output: [
-      'Work Experience:',
-      '',
-      'Current: Full Stack Engineer',
-      '  • Building scalable web applications',
-      '  • Frontend development with React & TypeScript',
-      '  • Transitioning to full-stack role',
-      '',
-      'Type "projects" to see what I\'ve built!',
-    ],
-  },
-  projects: {
-    output: [
-      'Recent Projects:',
-      '',
-      '  1. Personal Portfolio (This site!)',
-      '     • Next.js 15, TypeScript, Tailwind CSS',
-      '     • Interactive CLI, Contact form with backend',
-      '     • Modular architecture, Type-safe APIs',
-      '',
-      '  2. Python Personal Projects',
-      '     • Various backend experiments',
-      '     • API development and scripting',
-      '',
-      'Scroll down to see more details!',
-    ],
-  },
-  contact: {
-    output: [
-      'Get in touch:',
-      '',
-      '  • Scroll to the contact section below',
-      '  • Or type: navigate contact',
-      '',
-      'Looking forward to hearing from you!',
-    ],
-  },
-};
 
 export default function Terminal() {
   const [lines, setLines] = useState<TerminalLine[]>([
@@ -138,7 +47,7 @@ export default function Terminal() {
         { type: 'output', content: 'Usage: navigate <section>' },
         {
           type: 'output',
-          content: 'Available sections: about, skills, experience, contact',
+          content: `Available sections: ${VALID_SECTIONS.join(', ')}`,
         },
         { type: 'output', content: '' },
       ]);
@@ -146,9 +55,9 @@ export default function Terminal() {
     }
 
     if (trimmedCmd.startsWith('navigate ')) {
-      const section = trimmedCmd.split(' ')[1];
+      const section = trimmedCmd.split(' ')[1] as ValidSection;
       const element = document.getElementById(section);
-      if (element) {
+      if (element && VALID_SECTIONS.includes(section)) {
         element.scrollIntoView({ behavior: 'smooth' });
         setLines((prev) => [
           ...prev,
@@ -160,7 +69,7 @@ export default function Terminal() {
           ...prev,
           {
             type: 'error',
-            content: `Section "${section}" not found. Try: about, skills, experience, contact`,
+            content: `Section "${section}" not found. Try: ${VALID_SECTIONS.join(', ')}`,
           },
           { type: 'output', content: '' },
         ]);
@@ -169,9 +78,9 @@ export default function Terminal() {
     }
 
     // Execute predefined command
-    const result = COMMANDS[trimmedCmd];
+    const result = TERMINAL_COMMANDS[trimmedCmd];
     if (result) {
-      const outputLines = result.output.map((line) => ({
+      const outputLines = result.output.map((line: string) => ({
         type: (result.error ? 'error' : 'output') as 'output' | 'error',
         content: line,
       }));
@@ -237,12 +146,14 @@ export default function Terminal() {
       <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900 flex-1 flex flex-col">
         {/* Rotating gradient background - sits behind due to z-index */}
         <div
-          className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
+          className="absolute animate-[spin_3s_linear_infinite]"
           style={{
-            width: '350%',
+            width: '300%',
             height: '300%',
-            top: '-300px',
-            left: '-590px',
+            top: '-100%',
+            left: '-100%',
+            background: 'conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000)',
+            borderRadius: '50%',
           }}
         ></div>
 
@@ -268,6 +179,9 @@ export default function Terminal() {
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
             className="relative p-4 flex-1 overflow-y-auto font-mono text-sm cursor-text bg-black/10 min-h-0"
+            role="log"
+            aria-live="polite"
+            aria-label="Terminal output"
           >
             {lines.map((line, i) => (
               <div
@@ -294,6 +208,7 @@ export default function Terminal() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="flex-1 bg-transparent outline-none text-gray-100 caret-green-400 placeholder:text-gray-600"
+                aria-label="Terminal command input"
                 autoFocus
                 spellCheck={false}
                 autoComplete="off"
