@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://balacarter.com'),
+  metadataBase: new URL('https://balacarter.vercel.app'),
   title: "Bala Carter - React & TypeScript Software Engineer | Portfolio",
   description: "Bala Carter - Software Engineer specializing in React, TypeScript, and accessible web development. Los Angeles-based frontend expert with 3+ years of experience building scalable web applications.",
   keywords: [
