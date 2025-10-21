@@ -1,12 +1,13 @@
 import { Resend } from 'resend';
 import { ContactFormData } from '@/types/contact';
+import { env } from './env';
 
 /**
  * Email service for sending contact form submissions
  * Uses Resend API for reliable email delivery
  */
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
 /**
  * Sanitize HTML to prevent XSS attacks
@@ -33,8 +34,8 @@ export async function sendContactEmail(data: ContactFormData) {
 
   try {
     const result = await resend.emails.send({
-      from: process.env.CONTACT_EMAIL_FROM || 'noreply@example.com',
-      to: process.env.CONTACT_EMAIL_TO || 'your-email@example.com',
+      from: env.CONTACT_EMAIL_FROM,
+      to: env.CONTACT_EMAIL_TO,
       subject: safeSubject || `Portfolio Contact: Message from ${safeName}`,
       html: `
         <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">

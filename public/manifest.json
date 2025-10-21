@@ -1,0 +1,16 @@
+{
+  "name": "Bala Carter - Software Engineer Portfolio",
+  "short_name": "Bala Carter",
+  "description": "Software Engineer specializing in React, TypeScript, and accessible web development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import ContactForm from '@/components/ContactForm';
 import SkillCard from '@/components/SkillCard';
 import ExperienceCard from '@/components/ExperienceCard';
 import Footer from '@/components/Footer';
+import SkipLink from '@/components/SkipLink';
 
 export default function Home() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -57,6 +58,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
+      <SkipLink />
       <Background />
       <Header onToggleSidebar={toggleSidebar} />
 
@@ -110,7 +112,7 @@ export default function Home() {
           </section>
 
           {/* Main Content */}
-          <main className="max-w-4xl mx-auto px-6">
+          <main id="main-content" className="max-w-4xl mx-auto px-6">
             {/* About Section */}
             <section id="about" className="min-h-screen py-20">
               {/* Glass Background Container - Only Around Text */}
