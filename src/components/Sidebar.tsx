@@ -49,7 +49,7 @@ export default function Sidebar({
             ? `w-[90%] ${isVisible ? 'translate-x-0' : '-translate-x-full'}`
             : `${isVisible ? 'translate-x-0' : '-translate-x-full'} ${isExpanded ? 'w-[700px]' : 'w-96'}`
         }`}
-        style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}
+        style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)' }}
       >
         {/* Minimal Container */}
         <div

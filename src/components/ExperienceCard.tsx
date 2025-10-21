@@ -1,5 +1,7 @@
 'use client';
 
+import GlassCard from './GlassCard';
+
 interface ExperienceCardProps {
   company: string;
   location: string;
@@ -18,13 +20,7 @@ export default function ExperienceCard({
   skills,
 }: ExperienceCardProps) {
   return (
-    <div 
-      className="group relative rounded-xl border backdrop-blur-md p-6 transition-all duration-300"
-      style={{ 
-        backgroundColor: 'var(--glass-bg)', 
-        borderColor: 'var(--glass-border)'
-      }}
-    >
+    <GlassCard className="group relative p-6 transition-all duration-300">
       {/* Gradient overlay on hover */}
       <div 
         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -111,6 +107,6 @@ export default function ExperienceCard({
           ))}
         </div>
       </div>
-    </div>
+    </GlassCard>
   );
 }

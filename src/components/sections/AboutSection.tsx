@@ -1,8 +1,9 @@
+import GlassCard from '../GlassCard';
+
 export default function AboutSection() {
   return (
     <section id="about" className="min-h-screen py-20">
-      {/* Glass Background Container - Only Around Text */}
-      <div className="backdrop-blur-md border rounded-lg p-8" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
+      <GlassCard className="p-8">
         <h2 className="text-3xl font-bold mb-6">About</h2>
         <div className="prose max-w-none">
           <p className="text-lg leading-relaxed mb-6">
@@ -42,7 +43,7 @@ export default function AboutSection() {
             that delight users everywhere.
           </p>
         </div>
-      </div>
+      </GlassCard>
     </section>
   );
 }

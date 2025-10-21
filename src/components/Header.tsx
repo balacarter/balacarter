@@ -41,7 +41,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)' }}>
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)' }}>
       <div className="mx-auto px-4 md:px-10 py-4">
         <div className="flex items-center justify-between">
           {/* Initials Icon - Sidebar Toggle */}
@@ -66,7 +66,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                       : 'hover:text-foreground'
                   }`}
                   style={activeSection === 'hero' 
-                    ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                    ? { backgroundColor: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid' }
                     : { color: 'var(--text-muted)' }
                   }
                 >
@@ -95,7 +95,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                         : 'hover:text-foreground'
                     }`}
                     style={activeSection === link.href.slice(1)
-                      ? { backgroundColor: 'var(--glass-bg)', borderColor: 'var(--glass-border)', border: '1px solid' }
+                      ? { backgroundColor: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid' }
                       : { color: 'var(--text-muted)' }
                     }
                   >

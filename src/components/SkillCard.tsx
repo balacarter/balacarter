@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import GlassCard from './GlassCard';
 
 interface SkillCardProps {
   title: string;
@@ -11,13 +12,7 @@ interface SkillCardProps {
 
 export default function SkillCard({ title, description, icon, level }: SkillCardProps) {
   return (
-    <div 
-      className="group relative overflow-hidden rounded-xl backdrop-blur-md border p-6 transition-all duration-300 hover:scale-105 cursor-pointer"
-      style={{ 
-        backgroundColor: 'var(--glass-bg)', 
-        borderColor: 'var(--glass-border)'
-      }}
-    >
+    <GlassCard className="group relative overflow-hidden p-6 transition-all duration-300 hover:scale-105 cursor-pointer">
       {/* Gradient overlay on hover */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -60,6 +55,6 @@ export default function SkillCard({ title, description, icon, level }: SkillCard
         className="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.2), transparent)' }}
       ></div>
-    </div>
+    </GlassCard>
   );
 }
