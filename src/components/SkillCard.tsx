@@ -12,11 +12,11 @@ interface SkillCardProps {
 
 export default function SkillCard({ title, description, icon, level }: SkillCardProps) {
   return (
-    <GlassCard className="group relative overflow-hidden p-6 transition-all duration-300 hover:scale-105 cursor-pointer">
+    <GlassCard className="group relative overflow-hidden p-6 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
       {/* Gradient overlay on hover */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.1), rgba(74, 139, 92, 0.1))' }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+        style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.05), rgba(74, 139, 92, 0.05))' }}
       ></div>
       
       {/* Content */}
@@ -52,8 +52,8 @@ export default function SkillCard({ title, description, icon, level }: SkillCard
       
       {/* Decorative corner accent */}
       <div 
-        className="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.2), transparent)' }}
+        className="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+        style={{ background: 'linear-gradient(to bottom right, rgba(251, 191, 36, 0.1), transparent)' }}
       ></div>
     </GlassCard>
   );

@@ -237,12 +237,14 @@ export default function Terminal() {
       <div className="relative p-[2px] rounded-xl overflow-hidden [background-clip:content-box] bg-gray-900 flex-1 flex flex-col">
         {/* Rotating gradient background - sits behind due to z-index */}
         <div
-          className="absolute animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#8b00ff,#ff0000)]"
+          className="absolute animate-[spin_3s_linear_infinite]"
           style={{
-            width: '350%',
+            width: '300%',
             height: '300%',
-            top: '-300px',
-            left: '-590px',
+            top: '-100%',
+            left: '-100%',
+            background: 'conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000)',
+            borderRadius: '50%',
           }}
         ></div>
 

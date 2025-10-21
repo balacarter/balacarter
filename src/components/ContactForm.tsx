@@ -236,9 +236,23 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full sm:w-auto px-8 py-3 bg-foreground text-background font-medium rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+        className="group relative w-full sm:w-auto px-8 py-3 font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, var(--accent-primary) 0%, #d4af37 100%)',
+          color: 'var(--background)',
+          boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)',
+        }}
       >
-        {status === 'submitting' ? 'Sending...' : 'Send Message'}
+        <span className="relative z-10">
+          {status === 'submitting' ? 'Sending...' : 'Send Message'}
+        </span>
+        {/* Shine effect on hover */}
+        <div 
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: 'linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%)',
+          }}
+        />
       </button>
     </form>
   );

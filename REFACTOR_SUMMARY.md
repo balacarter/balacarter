@@ -98,6 +98,27 @@
 
 ---
 
+## ✅ GlassCard Component (Added)
+
+**Files Created:**
+- `/src/components/GlassCard.tsx` - Reusable glass morphism component
+
+**Files Modified:**
+- `/src/components/sections/AboutSection.tsx` - Uses GlassCard
+- `/src/components/SkillCard.tsx` - Uses GlassCard
+- `/src/components/ExperienceCard.tsx` - Uses GlassCard
+- `/src/components/Header.tsx` - Updated opacity
+- `/src/components/Sidebar.tsx` - Updated opacity
+- `/src/components/Footer.tsx` - Updated opacity
+
+**Impact**: 
+- Consistent glass styling across all components
+- Reduced opacity from 0.04 → 0.03 (more subtle, less opaque)
+- Reusable component eliminates repeated inline styles
+- Easier to maintain and update glass styling globally
+
+---
+
 ## 🎯 What Was NOT Implemented
 
 To keep changes minimal, the following were **intentionally skipped**:
